@@ -1,0 +1,98 @@
+// Footer
+footer {
+    background: #666;
+    color: $text-color-light;
+
+    a {
+        color: $text-color-light;
+        margin-right: 0.5rem;
+
+        &:hover {
+            color: rgba(darken($background-color, 20%), 0.7);
+        }
+
+        &:focus {
+            color: rgba(darken($background-color, 30%), 0.7);
+            outline: none;
+        }
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #main-footer {
+        margin: auto 3rem;
+        padding: 1rem 2rem;
+
+        #info {
+            margin-right: 3rem;
+
+            .title {
+                font-weight: 300;
+            }
+
+            #icons {
+                margin-top: 10px;
+
+                a {
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+
+    #copyright {
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        background: rgba(darken($background-color, 40%), 0.1);
+
+        small {
+            align-self: center;
+        }
+    }
+}
+
+// Table
+.hours {
+    table {
+        text-align: center;
+        border-collapse: collapse;
+
+        .table {
+            border: 1px #f4f4f4 solid;
+        }
+
+        th,
+        td {
+            @extend .table;
+            padding: 0.5rem 1rem;
+        }
+
+        th {
+            font-weight: normal;
+            background: rgba(lighten($background-color, 40%), 0.1);
+        }
+
+        tr:nth-child(1) th {
+            border-top: none;
+        }
+
+        tr:nth-child(3) th,
+        tr:nth-child(3) td {
+            border-bottom: none;
+        }
+
+        th:first-child {
+            border-left: none;
+        }
+
+        th:last-child,
+        td:last-child {
+            border-right: none;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+$primary-color: #143452;
+$background-color: #2e6fb9;
+$text-color-dark: #333;
+$text-color-light: #f4f4f4;
+
+@mixin border {
+    border: 1px #c2c2c2 solid;
+    border-radius: 5px;
+}
+
+@mixin easeOut {
+    transition: all 0.5s ease-out;
+}
+
+// Media Query Mixins
+@mixin mediaSm {
+    @media screen and (max-width: 500px) {
+        @content;
+    }
+}
+
+@mixin mediaMd {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin mediaLg {
+    @media screen and (max-width: 1170px) {
+        @content;
+    }
+}
+
+@mixin mediaXl {
+    @media screen and (min-width: 1171px) {
+        @content;
+    }
+}

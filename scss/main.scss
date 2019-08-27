@@ -1,30 +1,422 @@
-$text-color: #0f4f69;
+@import "config";
+@import "slider";
+@import "image";
+@import "menu";
+@import "footer";
 
-@mixin easeOut {
-    transition: all 0.5s ease-out;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-// Media Query Mixins
-@mixin mediaSm {
-    @media screen and (max-width: 500px) {
-        @content;
+body {
+    font-family: Quicksand, 游ゴシック, YuGothic, sans-serif;
+    color: $text-color-dark;
+    line-height: 2;
+}
+
+a {
+    text-decoration: none;
+    color: $text-color-light;
+    font-weight: bold;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    height: 60px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    background: $background-color;
+}
+
+// Main
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    margin: 60px auto;
+
+    section {
+        // Headings
+        .heading {
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        h1 {
+            @extend .heading;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            @extend .heading;
+            font-size: 1.7rem;
+        }
+
+        h3 {
+            @extend .heading;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        &.intro {
+            margin-bottom: 50px;
+
+            p {
+                padding: 0.2rem;
+            }
+        }
+
+        // Index Page
+        &#news {
+            margin: 3rem 0;
+            width: 60%;
+
+            h2 {
+                margin: auto;
+            }
+
+            // Button Styles
+            button {
+                color: $text-color-light;
+                padding: 0.2rem 1rem;
+                border-radius: 10%;
+                border: none;
+                background: #2a91b1;
+                cursor: pointer;
+
+                &:hover {
+                    background: rgba($text-color-dark, 0.7);
+
+                    // a {
+                    //     color: $text-color-light;
+                    // }
+                }
+
+                &:focus {
+                    background: $text-color-dark;
+                    outline: none;
+                }
+            }
+
+            #news-content {
+                margin: 1rem 0 0;
+
+                div {
+                    &:nth-child(odd) a {
+                        background: lighten($background-color, 40%);
+                    }
+
+                    a {
+                        color: $text-color-dark;
+                        font-weight: normal;
+                        margin: auto;
+                        padding: 1rem;
+                        position: relative;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 0;
+                            height: 1px;
+                            background-color: rgba(
+                                darken($background-color, 20%),
+                                0.7
+                            );
+                            transition: width 0.3s ease;
+                        }
+
+                        &:hover {
+                            color: rgba(darken($background-color, 20%), 0.7);
+
+                            &:after {
+                                width: 100%;
+                            }
+                        }
+
+                        time {
+                            padding-right: 1rem;
+                            align-self: flex-start;
+                        }
+                    }
+                }
+            }
+        }
+
+        &#why {
+            h2 {
+                margin: 0 auto 1.5rem;
+            }
+
+            .flex {
+                justify-content: space-evenly;
+
+                div {
+                    width: 25%;
+                    @include border;
+
+                    h3 {
+                        padding: 1rem 0;
+                        background: lighten($background-color, 40%);
+                    }
+
+                    p {
+                        padding: 1rem 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    //About Page
+    &#about {
+        section {
+            &#mission {
+                margin-bottom: 50px;
+            }
+
+            &#facility {
+                div#facility-intro {
+                    margin-bottom: 50px;
+                }
+
+                div.flex {
+                    width: 100%;
+                    height: auto;
+                    flex-wrap: wrap;
+                    text-align: center;
+
+                    div {
+                        width: 32%;
+                        margin: 1rem auto;
+                        @include border;
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+
+                        p {
+                            padding: 0.5rem 1rem 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Services Page
+    &#services {
+        section#features {
+            margin-bottom: 50px;
+            display: flex;
+            flex-wrap: wrap;
+
+            div.service-content {
+                flex: 40%;
+                max-width: 40%;
+                @include border;
+                margin: 2rem auto;
+
+                h3 {
+                    padding: 1rem 0;
+                    background: lighten($background-color, 40%);
+                }
+
+                p {
+                    padding: 1rem 2rem;
+                }
+            }
+
+            p {
+                padding: 1rem 2rem;
+            }
+        }
+    }
+
+    // Team Page
+    &#team {
+        section.intro {
+            margin-bottom: 50px;
+        }
+
+        section#teamMembers {
+            margin: 0 auto;
+
+            hr {
+                margin: 2rem 0;
+                width: 30%;
+            }
+
+            div.member {
+                margin: 50px auto;
+                display: grid;
+                grid-gap: 30px;
+
+                .member-info {
+                    h3 {
+                        font-size: 1.3rem;
+                        text-align: left;
+                    }
+
+                    p:nth-child(3) {
+                        padding: 1rem 0;
+                    }
+                }
+
+                .member-img {
+                    display: flex;
+
+                    img {
+                        width: 100%;
+                        border-radius: 50%;
+                        align-self: center;
+                    }
+                }
+
+                // Show Info And Img Alternatively
+                &.odd {
+                    grid-template-areas: "info img";
+                    grid-template-columns: 3fr 1fr;
+
+                    .member-info {
+                        grid-area: info;
+                    }
+
+                    .member-img {
+                        grid-area: img;
+                    }
+                }
+
+                &.even {
+                    grid-template-areas: "img info";
+                    grid-template-columns: 1fr 3fr;
+
+                    .member-info {
+                        grid-area: info;
+                    }
+
+                    .member-img {
+                        grid-area: img;
+                    }
+                }
+            }
+        }
+    }
+
+    // Access Page
+    &#access {
+        section#clinic-info {
+            width: 100%;
+
+            div.row {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+
+                &:first-child {
+                    margin-bottom: 50px;
+                }
+
+                div.facade {
+                    display: flex;
+                    margin: 0 1rem;
+
+                    img {
+                        width: 100%;
+                        border-radius: 5px;
+                    }
+                }
+
+                div.info-content {
+                    margin: 1rem;
+
+                    h2 {
+                        text-align: left;
+                    }
+
+                    p {
+                        margin: 0.5rem 0;
+                    }
+
+                    .social {
+                        a {
+                            margin-right: 1rem;
+                            outline: none;
+
+                            &:hover i {
+                                color: rgba(
+                                    darken($background-color, 20%),
+                                    0.7
+                                );
+                            }
+
+                            &:focus i {
+                                color: rgba(
+                                    darken($background-color, 30%),
+                                    0.7
+                                );
+                            }
+
+                            i {
+                                color: $text-color-dark;
+                            }
+                        }
+                    }
+                }
+
+                // Table
+                .hours {
+                    table {
+                        th {
+                            background: lighten($background-color, 40%);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Google Maps
+        section {
+            width: 100%;
+            margin: 25px auto;
+
+            #map {
+                width: 100%;
+
+                .mapouter {
+                    position: relative;
+                    text-align: right;
+                    height: 500px;
+                    width: 100%;
+
+                    .gmap_canvas {
+                        overflow: hidden;
+                        background: none !important;
+                        height: 500px;
+                        width: 100%;
+
+                        iframe {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
-@mixin mediaMd {
-    @media screen and (max-width: 768px) {
-        @content;
-    }
-}
-
-@mixin mediaLg {
-    @media screen and (min-width: 769px) and (max-width: 1170px) {
-        @content;
-    }
-}
-
-@mixin mediaXl {
-    @media screen and (min-width: 1171px) {
-        @content;
-    }
-}
+@import "mobile";

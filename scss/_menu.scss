@@ -1,0 +1,95 @@
+// Menu Button
+.menu-btn {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    right: 35px;
+    top: 20px;
+    cursor: pointer;
+    @include easeOut;
+
+    .btn-line {
+        width: 28px;
+        height: 3px;
+        margin: 0 0 5px 0;
+        background: $text-color-light;
+        @include easeOut;
+    }
+
+    // Rotate Into X With Menu Lines
+    &.show {
+        transform: rotate(180deg);
+
+        .btn-line {
+            // Line 1 - Rotate
+            &:nth-child(1) {
+                transform: rotate(45deg) translate(10px, 7px);
+            }
+
+            // Line 2 - Hide
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            // Line 3 - Rotate
+            &:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, 0px);
+            }
+        }
+    }
+}
+
+// Menu Overlay
+nav#menu {
+    width: 100%;
+
+    ul.navbar {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+
+        li.nav-item {
+            margin: 0 1.5rem;
+
+            &.currentPage a.nav-link:after {
+                content: "";
+                display: block;
+                transform: translateY(-50%);
+                height: 1px;
+                width: 100%;
+                background-color: $text-color-light;
+                transition: 0.3s ease-in-out;
+                z-index: 2;
+            }
+
+            a.nav-link {
+                text-decoration: none;
+
+                // Hover Line Effect
+                &:after {
+                    content: "";
+                    display: block;
+                    transform: translateY(-50%);
+                    height: 1px;
+                    width: 0px;
+                    background-color: $text-color-light;
+                    transition: 0.3s ease-in-out;
+                    z-index: 2;
+                }
+
+                &:hover {
+                    color: #fcd734;
+
+                    &:after {
+                        width: 100%;
+                    }
+                }
+
+                &:focus {
+                    color: darken(#fcd734, 20%);
+                    outline: none;
+                }
+            }
+        }
+    }
+}
