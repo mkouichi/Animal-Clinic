@@ -22,8 +22,6 @@
     footer {
         #main-footer {
             margin: auto 3rem;
-            // padding: 1rem 0;
-            // font-size: 0.8rem;
 
             .hours table th,
             .hours table td {
@@ -75,7 +73,6 @@
                 }
 
                 li.nav-item {
-                    // margin: 0 1rem;
                     padding: 0.5rem;
                     transform: translate3d(-600px, -600px, 0);
                     @include easeOut;
@@ -245,8 +242,7 @@
 
                 #icons {
                     grid-area: icons;
-                    margin: 0;
-                    // margin: auto 0 auto 2rem;
+                    // margin: 0;
                     padding-left: 1rem;
                 }
             }
@@ -319,8 +315,6 @@
 
         // Access Page
         .row {
-            // margin: auto 3rem;
-            // padding: 1rem 0;
             font-size: 0.8rem;
 
             .hours table th,
@@ -332,12 +326,22 @@
 
     // Footer
     footer {
-        #main-footer{
+        #main-footer {
             margin: 0;
-        }
 
-        .hours {
-            padding-top: 1rem;
+            div.hours {
+                padding-top: 1rem;
+            }
+
+            div#info {
+                p {
+                    align-self: center;
+
+                    &.address2{
+                        align-self: end;
+                    }
+                }
+            }
         }
     }
 }
