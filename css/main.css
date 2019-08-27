@@ -279,7 +279,7 @@ main {
     main section.intro p {
       padding: 0.2rem; }
   main section#news {
-    margin: 3rem 0;
+    margin-bottom: 50px;
     width: 60%; }
     main section#news h2 {
       margin: auto; }
@@ -572,7 +572,6 @@ main {
         align-self: end; }
       footer #main-footer #info #icons {
         grid-area: icons;
-        margin: 0;
         padding-left: 1rem; } }
 
 @media screen and (max-width: 500px) {
@@ -607,5 +606,9 @@ main {
       padding: 0.3rem 0.7rem; }
   footer #main-footer {
     margin: 0; }
-  footer .hours {
-    padding-top: 1rem; } }
+    footer #main-footer div.hours {
+      padding-top: 1rem; }
+    footer #main-footer div#info p {
+      align-self: center; }
+      footer #main-footer div#info p.address2 {
+        align-self: end; } }
